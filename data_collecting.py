@@ -6,9 +6,11 @@ import os
 
 
 def get_data():
+    #drop and recreate new database
     os.remove('db.sqlite3')
     with open('db.sqlite3', 'w') as fp:
         pass
+    #create new database
     db = sqlite3.connect('db.sqlite3')
     cursor = db.cursor()
     cursor.execute(
