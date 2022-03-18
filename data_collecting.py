@@ -6,15 +6,15 @@ import os
 
 
 def get_data():
-    #drop and recreate new database
+    # drop and recreate new database
     os.remove('db.sqlite3')
     with open('db.sqlite3', 'w') as fp:
         pass
-    #create new database
+    # create new database
     db = sqlite3.connect('db.sqlite3')
     cursor = db.cursor()
     cursor.execute(
-        '''CREATE TABLE IF NOT EXISTS Stock (name varchar(64), code varchar(32), price double precision , date TIMESTAMP)''')
+        '''CREATE TABLE IF NOT EXISTS app_stock (name varchar(64), code varchar(32), price double precision , date TIMESTAMP)''')
     link = 'https://www.bankier.pl/gielda/notowania/akcje'
     now = dt.now()
     page = get(link)
@@ -27,7 +27,7 @@ def get_data():
                 'td', class_='colKurs change ').get_text()
             for td in actions.find_all('td', class_='colWalor textNowrap'):
                 name = td.a['title']
-                cursor.execute('INSERT OR REPLACE INTO Stock VALUES (?, ?, ?, ?)', (name, code, price, now))
+                cursor.execute('INSERT OR REPLACE INTO app_stock VALUES (?, ?, ?, ?)', (name, code, price, now))
                 db.commit()
 
         except AttributeError:
