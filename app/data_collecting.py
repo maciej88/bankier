@@ -7,11 +7,11 @@ import os
 
 def get_data():
     # drop and recreate new database
-    os.remove('db.sqlite3')
-    with open('db.sqlite3', 'w') as fp:
+    os.remove('../db.sqlite3')
+    with open('../db.sqlite3', 'w') as fp:
         pass
     # create new database
-    db = sqlite3.connect('db.sqlite3')
+    db = sqlite3.connect('../db.sqlite3')
     cursor = db.cursor()
     cursor.execute(
         '''CREATE TABLE IF NOT EXISTS app_stock (name varchar(64), code varchar(32), price double precision , date TIMESTAMP)''')
@@ -33,6 +33,5 @@ def get_data():
         except AttributeError:
             continue
     db.close()
-
 
 get_data()
