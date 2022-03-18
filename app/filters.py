@@ -5,7 +5,7 @@ class StockFilter(django_filters.FilterSet):
         ('ascending', 'asc'),
         ('descending', 'desc')
     )
-    name = django_filters.ChoiceFilter(label='Name', choices=CHOICES, method='filter_by_order')
+    name = django_filters.ChoiceFilter(label='Sort', choices=CHOICES, method='filter_by_order')
 
 
     def filter_by_order(self, queryset, name, value):
