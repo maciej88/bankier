@@ -6,26 +6,26 @@
 </head>
 <body>
 <form method="GET">
-{{ filter.form }}
+    {{ filter.form }}
     <button type="submit">Submit</button>
 </form>
 <table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Price</th>
+        <th>Date</th>
+    </tr>
+    {% for i in filter.object_list %}
         <tr>
-            <th>Name</th>
-            <th>Code</th>
-            <th>Price</th>
-            <th>Date</th>
-        </tr>
-        {% for i in filter.object_list %}
-        <tr>
-            <td>{{ i.name }}</td>
-            <td>{{ i.code }}</td>
-            <td>{{ i.price }}</td>
-            <td>{{ i.date }}</td>
-        {% empty %}
-            <td>No data avilable</td>
-        {% endfor %}
-        </tr>
+        <td>{{ i.name }}</td>
+        <td>{{ i.code }}</td>
+        <td>{{ i.price }}</td>
+        <td>{{ i.date }}</td>
+    {% empty %}
+        <td>No data avilable</td>
+    {% endfor %}
+    </tr>
 </table>
 </body>
 </html>
