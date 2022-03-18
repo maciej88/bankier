@@ -2,9 +2,13 @@ from bs4 import BeautifulSoup
 from requests import get
 from datetime import datetime as dt
 import sqlite3
+import os
 
 
 def get_data():
+    os.remove('db.sqlite3')
+    with open('db.sqlite3', 'w') as fp:
+        pass
     db = sqlite3.connect('db.sqlite3')
     cursor = db.cursor()
     cursor.execute(
