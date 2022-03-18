@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Price</th>
+            <th>Date</th>
+        </tr>
+        {% for i in object_list %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.code }}</td>
+            <td>{{ i.price }}</td>
+            <td>{{ i.date }}</td>
+        {% empty %}
+            <td>No data avilable</td>
+        {% endfor %}
+        </tr>
+</table>
+</body>
+</html>

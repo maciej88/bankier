@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from app.models import Stock
 
-# Create your views here.
+class BankerListView(ListView):
+    model = Stock
+    queryset = Stock.objects.all()
+    template_name = 'index.html'
